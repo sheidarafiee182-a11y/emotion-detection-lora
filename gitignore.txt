@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.pyc
+*.so
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+venv/
+.venv/
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Data
+data/
+*.arrow
+*.zip
+
+
+# Results
+logs/
+*.log
+results/
+*.png
+
+# Jupyter
+.ipynb_checkpoints/
+
+# HuggingFace cache
+.cache/
