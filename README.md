@@ -31,7 +31,7 @@ This project fine-tunes a **RoBERTa-base** model for **multi-label emotion detec
 
 The model classifies text into **28 distinct emotions**, with a special focus on handling **imbalanced classes** (e.g., `grief` with only 77 samples vs `neutral` with 14,219 samples).
 
-### 🎯 Key Features
+###  Key Features
 -  **28 emotion classes** from the GoEmotions dataset
 -  **Parameter-Efficient** training with LoRA (< 1% trainable parameters)
 -  **Handling class imbalance** with Focal Loss and Class Weights
@@ -98,8 +98,8 @@ To address the class imbalance, we performed **targeted augmentation** on classe
 
 #### Model A (Advanced - Best Performance)
 - **Base model**: `roberta-base` (125M params)
-- **LoRA rank**: 8, **alpha**: 16, **dropout**: 0.1
-- **Target modules**: `query`, `value`
+- **LoRA rank**: 16, **alpha**: 32, **dropout**: 0.3
+- **Target modules**: `query`, `value`, `key` 
 - **Classification head**: trained fully via `modules_to_save=["classifier"]`
 - **Loss function**: **Focal Loss** (α=0.25, γ=2.0)
 - **Class weights**: Inverse-frequency weights for imbalanced classes
@@ -116,7 +116,7 @@ To address the class imbalance, we performed **targeted augmentation** on classe
 
 ---
 
-## 🏗️ Model Architecture
+##  Model Architecture
 
 ![Model Architecture](images/model_architecture_block_diagram.png)
 
@@ -159,11 +159,11 @@ To address the class imbalance, we performed **targeted augmentation** on classe
 
 | Metric | Model A (Advanced) | Model B (Baseline) | Improvement |
 |--------|-------------------|-------------------|-------------|
-| **F1-Macro** | **0.236** | 0.182 | **+29.7%** ✅ |
-| **F1-Micro** | **0.460** | 0.340 | **+35.3%** ✅ |
-| **Accuracy** | **0.319** | 0.211 | **+51.2%** ✅ |
-| **Loss** | **0.005** | 0.006 | **-16.7%** ✅ |
-| **Precision** | **0.686** | 0.429 | **+59.9%** ✅ |
+| **F1-Macro** | **0.236** | 0.182 | **+29.7%**  |
+| **F1-Micro** | **0.460** | 0.340 | **+35.3%**  |
+| **Accuracy** | **0.319** | 0.211 | **+51.2%**  |
+| **Loss** | **0.005** | 0.006 | **-16.7%**  |
+| **Precision** | **0.686** | 0.429 | **+59.9%**  |
 
 ### Confusion Matrices
 
@@ -209,7 +209,7 @@ emotion-detection-lora/
 │           └── state.json
 │
 ├── models/
-│   └── best-model/                         # ✅ Best LoRA adapter (~5MB)
+│   └── best-model/                         #  Best LoRA adapter (~5MB)
 │       ├── adapter_config.json
 │       ├── adapter_model.safetensors
 │       └── tokenizer files...
@@ -267,7 +267,7 @@ tokenizer.save_pretrained('models/roberta-base-classification')
 
 ---
 
-## 🚀 Usage
+##  Usage
 
 ### Load the Best Model
 
@@ -307,7 +307,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = model.to(device)
 model.eval()
 
-print("✅ Model loaded successfully!")
+print(" Model loaded successfully!")
 ```
 
 ### Predict Emotions
@@ -375,10 +375,10 @@ def predict_emotion(text, model, tokenizer, threshold=0.5):
 text = "I absolutely love this movie! It's the best film I've ever seen."
 predictions = predict_emotion(text, model, tokenizer, threshold=0.5)
 
-print(f"📝 Text: {text}")
+print(f" Text: {text}")
 print("=" * 50)
 for pred in predictions[:5]:
-    bar = '█' * int(pred['probability'] * 50)
+    bar = '' * int(pred['probability'] * 50)
     print(f"   {pred['emotion']:15s}: {pred['probability']:.4f} {bar}")
 ```
 
@@ -430,24 +430,24 @@ results = predict_batch(texts, model, tokenizer, threshold=0.5)
 
 ---
 
-## 🔮 Future Work
+##  Future Work
 
-- [ ] Improve rare class performance (grief, nervousness, pride, relief)
-- [ ] Hyperparameter optimization with Optuna
-- [ ] Ensemble learning with multiple LoRA adapters
-- [ ] LLM-as-a-Judge for qualitative evaluation
-- [ ] Production deployment with FastAPI and Docker
-- [ ] Real-time monitoring with drift detection
+-  Improve rare class performance (grief, nervousness, pride, relief)
+-  Hyperparameter optimization with Optuna
+-  Ensemble learning with multiple LoRA adapters
+-  LLM-as-a-Judge for qualitative evaluation
+-  Production deployment with FastAPI and Docker
+-  Real-time monitoring with drift detection
 
 
-## 👨‍💻 Author
+##  Author
 
 **Your Name**
 - GitHub: [sheidarafiee](https://github.com/sheidarafiee182-a11y)
 
 ---
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - [GoEmotions Dataset](https://github.com/google-research/google-research/tree/master/goemotions) by Google Research
 - [HuggingFace Transformers](https://huggingface.co/docs/transformers)
