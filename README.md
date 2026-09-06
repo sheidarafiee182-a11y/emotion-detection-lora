@@ -9,7 +9,7 @@
 
 ---
 
-## 📖 Table of Contents
+##  Table of Contents
 - [Overview](#overview)
 - [Dataset](#dataset)
 - [Approach](#approach)
@@ -25,7 +25,7 @@
 
 ---
 
-## 📌 Overview
+##  Overview
 
 This project fine-tunes a **RoBERTa-base** model for **multi-label emotion detection** on the **GoEmotions** dataset using **Parameter-Efficient Fine-Tuning (PEFT)** with **Low-Rank Adaptation (LoRA)**.
 
@@ -41,7 +41,7 @@ The model classifies text into **28 distinct emotions**, with a special focus on
 
 ---
 
-## 📊 Dataset
+##  Dataset
 
 ### GoEmotions Dataset
 - **Source**: Google Research GoEmotions
@@ -82,7 +82,7 @@ To address the class imbalance, we performed **targeted augmentation** on classe
 
 ---
 
-## 🛠️ Approach
+##  Approach
 
 ### Why PEFT/LoRA instead of Full Fine-Tuning?
 
@@ -129,7 +129,7 @@ To address the class imbalance, we performed **targeted augmentation** on classe
 
 ---
 
-## 📈 Results
+##  Results
 
 ### Model A (Advanced) - **Best Performance**
 
@@ -236,7 +236,7 @@ emotion-detection-lora/
 
 ---
 
-## 💻 Installation
+##  Installation
 
 ### 1. Clone the Repository
 ```bash
