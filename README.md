@@ -118,8 +118,7 @@ To address the class imbalance, we performed **targeted augmentation** on classe
 - **Data**: Original dataset (no augmentation)
 
 ---
-
-## 🏗️ Model Architecture
+ 🏗️ Model Architecture
 
 ![Model Architecture](images/model_architecture_block_diagram.png)
 
@@ -184,7 +183,7 @@ To address the class imbalance, we performed **targeted augmentation** on classe
 
 ---
 
-## 📂 Project Structure
+ 📂 Project Structure
 
 ```
 emotion-detection-lora/
