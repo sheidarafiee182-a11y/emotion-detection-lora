@@ -442,7 +442,6 @@ results = predict_batch(texts, model, tokenizer, threshold=0.5)
 
 ##  Author
 
-**Your Name**
 - GitHub: [sheidarafiee](https://github.com/sheidarafiee182-a11y)
 
 ---
